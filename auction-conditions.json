@@ -1,16 +1,5 @@
 [
   {
-    "id": "c555bbf3-7e44-4631-8dec-64e0b4871126",
-    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
-    "condition": {
-      "keyword": "CDP 테스트 매물",
-      "priceMax": 999999999
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-14T16:54:45.532Z"
-  },
-  {
     "id": "953411e0-01bd-443e-95d4-f42b26260a65",
     "machineId": "cdp-test",
     "condition": {
