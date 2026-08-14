@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "26893f2b-d6fd-4fc6-9bc2-3a50559d559a",
+    "machineId": "test-machine-002",
+    "condition": {
+      "keyword": "청록빛",
+      "priceMax": 100000
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:15:03.379Z"
+  }
+]
