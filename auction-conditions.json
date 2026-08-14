@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "2e072142-4107-4aeb-8534-06710316343e",
+    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
+    "condition": {
+      "keyword": "무기",
+      "priceMax": 999999999999
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:57:12.269Z"
+  }
+]
