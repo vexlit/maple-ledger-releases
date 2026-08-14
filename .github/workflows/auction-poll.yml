@@ -1,0 +1,39 @@
+name: Auction Poll
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: auction-poll
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Poll auction API
+        env:
+          NEXON_COOKIE: ${{ secrets.NEXON_COOKIE }}
+        run: node scripts/poll-auction.mjs
+
+      - name: Commit updated conditions/results
+        run: |
+          git config user.name "auction-poll-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add auction-conditions.json auction-results.json
+          if git diff --cached --quiet; then
+            echo "변경 없음, 커밋 생략"
+          else
+            git commit -m "auction poll: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
