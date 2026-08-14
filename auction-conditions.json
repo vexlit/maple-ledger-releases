@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "71351b4e-492e-47ce-a298-2d3f0fafc56b",
+    "machineId": "local-poll-test",
+    "condition": {
+      "keyword": "청록빛 큐브",
+      "priceMax": 999999999
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:27:39.415Z"
+  }
+]
