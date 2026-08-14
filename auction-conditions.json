@@ -9,5 +9,16 @@
     "searchKey": null,
     "seenTradeSns": [],
     "createdAt": "2026-08-14T16:54:45.532Z"
+  },
+  {
+    "id": "953411e0-01bd-443e-95d4-f42b26260a65",
+    "machineId": "cdp-test",
+    "condition": {
+      "keyword": "CDP 직접호출 테스트",
+      "priceMax": 123456
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:55:02.766Z"
   }
 ]
