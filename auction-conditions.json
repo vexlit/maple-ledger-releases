@@ -1,0 +1,13 @@
+[
+  {
+    "id": "44503875-efbf-42f1-b542-1cf5e7254da1",
+    "machineId": "test-machine-001",
+    "condition": {
+      "keyword": "û�Ϻ�",
+      "priceMax": 100000
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:14:34.873Z"
+  }
+]
