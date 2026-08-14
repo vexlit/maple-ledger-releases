@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "5c3f2887-4da1-423f-a508-ad5e08067a74",
+    "machineId": "local-poll-test",
+    "condition": {
+      "keyword": "û�Ϻ� ť��",
+      "priceMax": 999999999
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-14T16:27:18.262Z"
+  }
+]
