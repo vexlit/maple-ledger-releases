@@ -1,13 +1,1 @@
-[
-  {
-    "id": "49f9fdd9-d9f6-4134-b3cc-9ba7d5d86ff3",
-    "machineId": "concurrency-smoke-test",
-    "condition": {
-      "keyword": "race2-7",
-      "priceMax": 1
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-15T10:26:23.348Z"
-  }
-]
+[]
