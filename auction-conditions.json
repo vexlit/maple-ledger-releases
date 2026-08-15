@@ -53,5 +53,16 @@
     "searchKey": null,
     "seenTradeSns": [],
     "createdAt": "2026-08-15T10:25:41.845Z"
+  },
+  {
+    "id": "e47b19a7-56de-4a1c-a2e4-447918233741",
+    "machineId": "concurrency-smoke-test",
+    "condition": {
+      "keyword": "race2-3",
+      "priceMax": 1
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-15T10:26:23.238Z"
   }
 ]
