@@ -336,6 +336,7 @@ async function main() {
 
   writeJson(CONDITIONS_PATH, conditions);
   writeJson(RESULTS_PATH, trimmedResults);
+  writeJson(STATUS_PATH, { ...readJson(STATUS_PATH, {}), authFailing: false, lastPolledAt: new Date().toISOString() });
 
   const dl = await api(`${API_BASE}/market/web/daily-limit`);
   if (dl.ok) console.log(`남은 검색 생성 횟수: ${dl.data?.search?.remaining}/${dl.data?.search?.limit}`);
