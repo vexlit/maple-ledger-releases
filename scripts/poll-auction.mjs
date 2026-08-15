@@ -16,7 +16,7 @@ if (!NEXON_COOKIE) {
   process.exit(1);
 }
 
-const DEVICE_ID = randomBytes(16).toString('hex');
+const DEVICE_ID = process.env.NEXON_DEVICE_ID || randomBytes(16).toString('hex');
 
 function headers(hasBody = false) {
   const h = {

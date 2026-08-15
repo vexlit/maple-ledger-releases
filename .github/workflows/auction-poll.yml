@@ -22,6 +22,7 @@ jobs:
       - name: Poll auction API
         env:
           NEXON_COOKIE: ${{ secrets.NEXON_COOKIE }}
+          NEXON_DEVICE_ID: ${{ secrets.NEXON_DEVICE_ID }}
         run: node scripts/poll-auction.mjs
 
       - name: Commit updated conditions/results
