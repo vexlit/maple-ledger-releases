@@ -21213,14 +21213,14 @@
     }
   },
   {
-    "id": "b12f5f4a-2991-4e84-88ba-1771835c9708:hYsBGU3PIRTPuJLrye1KnyQtZSSMmxaowA4sHOWKQOs",
+    "id": "b12f5f4a-2991-4e84-88ba-1771835c9708:Zm3fqYjt_VkcLr7zsvJiHDCptFfoVtpP1J18LAYhUjs",
     "conditionId": "b12f5f4a-2991-4e84-88ba-1771835c9708",
     "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
     "itemName": "컴플리트 언더컨트롤",
-    "price": 225000000000,
-    "tradeSn": "hYsBGU3PIRTPuJLrye1KnyQtZSSMmxaowA4sHOWKQOs",
-    "endDate": "2026-08-17T17:24:39.377Z",
-    "foundAt": "2026-08-15T17:31:22.049Z",
+    "price": 165555555555,
+    "tradeSn": "Zm3fqYjt_VkcLr7zsvJiHDCptFfoVtpP1J18LAYhUjs",
+    "endDate": "2026-08-17T17:40:14.853Z",
+    "foundAt": "2026-08-15T18:19:15.767Z",
     "icon": "https://avatar.maplestory.nexon.com/ItemIcon/KEJFJHHE.png",
     "toolTip": {
       "starforce": 22,
@@ -21459,17 +21459,17 @@
         "incReq": 0,
         "arc": 0,
         "aut": 0,
-        "str": 170,
-        "dex": 170,
-        "int": 170,
-        "luk": 170,
+        "str": 173,
+        "dex": 173,
+        "int": 173,
+        "luk": 173,
         "all": 0,
         "mhp": 1250,
         "mmp": 0,
         "hpr": 0,
         "mpr": 0,
         "mdf": 0,
-        "pad": 121,
+        "pad": 131,
         "mad": 121,
         "pdd": 0,
         "speed": 0,
@@ -21555,17 +21555,17 @@
         "incReq": 0,
         "arc": 0,
         "aut": 0,
-        "str": 0,
-        "dex": 0,
-        "int": 0,
-        "luk": 0,
+        "str": 3,
+        "dex": 3,
+        "int": 3,
+        "luk": 3,
         "all": 0,
         "mhp": 0,
         "mmp": 0,
         "hpr": 0,
         "mpr": 0,
         "mdf": 0,
-        "pad": 0,
+        "pad": 10,
         "mad": 0,
         "pdd": 0,
         "speed": 0,
@@ -21658,12 +21658,530 @@
           "description": "스타포스 : 22성 (최대 30성)"
         },
         "scroll": {
-          "current": 0,
-          "remaining": 10,
+          "current": 1,
+          "remaining": 9,
           "failure": 0,
           "max": 10,
           "canUpgrade": true,
-          "description": "주문서 강화 없음 (잔여 10회, 복구 가능 0회)"
+          "description": "주문서 강화 1회 (잔여 9회, 복구 가능 0회)"
+        },
+        "exOption": {
+          "sum": 0,
+          "canUpgrade": false,
+          "entries": [],
+          "description": "추가옵션 : 강화 불가"
+        },
+        "potential": {
+          "grade": 4,
+          "entries": [
+            {
+              "grade": 4,
+              "text": "올스탯 +9%"
+            },
+            {
+              "grade": 4,
+              "text": "올스탯 +9%"
+            },
+            {
+              "grade": 4,
+              "text": "LUK +12%"
+            }
+          ],
+          "description": "잠재능력 : 레전드리"
+        },
+        "additionalPotential": {
+          "grade": 4,
+          "entries": [
+            {
+              "grade": 4,
+              "text": "올스탯 +6%"
+            },
+            {
+              "grade": 3,
+              "text": "올스탯 +5%"
+            },
+            {
+              "grade": 3,
+              "text": "LUK +6%"
+            }
+          ],
+          "description": "에디셔널 잠재능력 : 레전드리"
+        }
+      },
+      "soulWeapon": null,
+      "exceptionalUpgrade": null,
+      "mvpGrade": null,
+      "attributeInfo": {
+        "descs": [],
+        "itemLimit": null,
+        "seedRingLimit": null
+      },
+      "addition": null,
+      "epicDesc": null,
+      "variableStat": null,
+      "illusionRingGrade": null,
+      "descs": [],
+      "growthDescs": [],
+      "specificTargetDescs": [],
+      "prismColorInfo": null,
+      "prismPartName": null,
+      "prismColor": null,
+      "symbolGrowth": null,
+      "normalGrowth": null
+    }
+  },
+  {
+    "id": "b12f5f4a-2991-4e84-88ba-1771835c9708:QAjsC_8vbEzNr5g5bbdnYfd2v7-BsDV-mm2mXbhHoCg",
+    "conditionId": "b12f5f4a-2991-4e84-88ba-1771835c9708",
+    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
+    "itemName": "컴플리트 언더컨트롤",
+    "price": 200000000000,
+    "tradeSn": "QAjsC_8vbEzNr5g5bbdnYfd2v7-BsDV-mm2mXbhHoCg",
+    "endDate": "2026-08-17T18:12:08.087Z",
+    "foundAt": "2026-08-15T18:19:15.767Z",
+    "icon": "https://avatar.maplestory.nexon.com/ItemIcon/KEJFJHHE.png",
+    "toolTip": {
+      "starforce": 22,
+      "starforceMax": 30,
+      "titleInfo": {
+        "titleType": 1,
+        "title": "스키",
+        "isMeister": false,
+        "isMasterItem": false
+      },
+      "itemIcon": {
+        "fallBackUrl": "https://avatar.maplestory.nexon.com/ItemIcon/KEJFJHHE.png",
+        "encryptedLookItemId": "84439804c6cd5c85fbd74f94bec715c2"
+      },
+      "isProtected": false,
+      "isProtectedGreenZone": false,
+      "isPermanentlyAttributed": false,
+      "isAmazingHyperUpgradeUsed": false,
+      "vestige": false,
+      "itemName": "컴플리트 언더컨트롤",
+      "itemDesc": null,
+      "faceEmotionLook": null,
+      "gradeInfo": {
+        "isSpecialGrade": false,
+        "royalSpecialType": 0,
+        "eventLabel": null,
+        "limitedLabel": null
+      },
+      "cashDesc": [],
+      "tradeDesc": [
+        "1회 교환 가능 (거래 후 교환 불가)",
+        "(가위 사용 잔여 횟수 : 4 / 5)"
+      ],
+      "expireDesc": "",
+      "abilityExpireDesc": [],
+      "attackPower": null,
+      "categories": [
+        "기계 심장"
+      ],
+      "lookItem": null,
+      "reqJob": "공용",
+      "unwearableJobNames": [],
+      "reqLevel": 200,
+      "reqGender": null,
+      "androidPreview": null,
+      "androidGrade": 5,
+      "setEffects": [
+        "칠흑의 보스 세트"
+      ],
+      "setItemInfo": {
+        "encryptedSetItemId": "242185c986b59f2a8c65e6c36993cc71",
+        "setItemName": "칠흑의 보스 세트",
+        "completeCount": 10,
+        "parts": [
+          {
+            "typeName": "얼굴장식",
+            "representName": "루즈 컨트롤 머신 마크",
+            "itemIds": [
+              "489a19cb071737112bbdaa7250e272cf"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "눈장식",
+            "representName": "마력이 깃든 안대",
+            "itemIds": [
+              "28013700312b072685862b10b9fa8d75"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "기계 심장",
+            "representName": "블랙 하트",
+            "itemIds": [
+              "d0c9337159505c89e121e8d2843caa47",
+              "f48f6c14b96662fa70e0e3a2e4f4a3cf"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "기계 심장",
+            "representName": "컴플리트 언더컨트롤",
+            "itemIds": [
+              "84439804c6cd5c85fbd74f94bec715c2"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "벨트",
+            "representName": "몽환의 벨트",
+            "itemIds": [
+              "664f037cda8b90f45541efafbfbf1ca7"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "펜던트",
+            "representName": "고통의 근원",
+            "itemIds": [
+              "9c54a1f90be94174bf3246b4f71949f5"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "뱃지",
+            "representName": "창세의 뱃지",
+            "itemIds": [
+              "f1c0271272101da69acb632dcbbaea3b"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "귀고리",
+            "representName": "커맨더 포스 이어링",
+            "itemIds": [
+              "fdbff4b29894e6e9bd580eac880241db"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "반지",
+            "representName": "거대한 공포",
+            "itemIds": [
+              "6a205aa92123277b3aaf14c7f1ef162c"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "포켓 아이템",
+            "representName": "저주받은 마도서 중 택1",
+            "itemIds": [
+              "6d4a643bf2e5a9bd95b28cecf5fc6979",
+              "5db94a4b1343ad59ef5ddc4467e2e779",
+              "7bc050b61f2f421fc48c5c0e55e66d2c",
+              "89fb0a2ea7e55204cbcf26b7c73282e9"
+            ],
+            "memberNames": []
+          },
+          {
+            "typeName": "엠블렘",
+            "representName": "미트라의 분노 중 택1",
+            "itemIds": [
+              "3aeca7b1921c13bb0cb8f5b1fa477249",
+              "633d7b7ec4024105f5babf3f5ba6960f",
+              "eafa616bfb0ee4293b3ad2abce744f4c",
+              "a095956feffc6a9b0d455217f0dc3c91",
+              "f33a3c818d4898e5b5e4793ca6256b4b"
+            ],
+            "memberNames": []
+          }
+        ],
+        "effects": [
+          {
+            "partsCount": 2,
+            "descriptions": [
+              "올스탯  +10, 최대 HP  +250",
+              "공격력 / 마력  +10",
+              "보스 몬스터 데미지 +10%"
+            ]
+          },
+          {
+            "partsCount": 3,
+            "descriptions": [
+              "올스탯  +10, 최대 HP  +250",
+              "공격력 / 마력  +10",
+              "방어력  +250",
+              "몬스터 방어율 무시 +10%"
+            ]
+          },
+          {
+            "partsCount": 4,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "크리티컬 데미지 +5%"
+            ]
+          },
+          {
+            "partsCount": 5,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "보스 몬스터 데미지 +10%"
+            ]
+          },
+          {
+            "partsCount": 6,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "몬스터 방어율 무시 +10%"
+            ]
+          },
+          {
+            "partsCount": 7,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "크리티컬 데미지 +5%"
+            ]
+          },
+          {
+            "partsCount": 8,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "보스 몬스터 데미지 +10%"
+            ]
+          },
+          {
+            "partsCount": 9,
+            "descriptions": [
+              "올스탯  +15, 최대 HP  +375",
+              "공격력 / 마력  +15",
+              "크리티컬 데미지 +5%"
+            ]
+          },
+          {
+            "partsCount": 10,
+            "descriptions": [
+              "올스탯  +20, 최대 HP  +500",
+              "공격력 / 마력  +20",
+              "보스 몬스터 데미지 +10%"
+            ]
+          }
+        ]
+      },
+      "skillNames": null,
+      "seedRingType": 0,
+      "seedRingTotalInfo": null,
+      "seedRingLevel": 0,
+      "attackSpeed": null,
+      "durability": null,
+      "stat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 200,
+        "dex": 200,
+        "int": 200,
+        "luk": 200,
+        "all": 0,
+        "mhp": 1250,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 121,
+        "mad": 231,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 30,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 22,
+        "craft": 0
+      },
+      "baseStat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 25,
+        "dex": 25,
+        "int": 25,
+        "luk": 25,
+        "all": 0,
+        "mhp": 1250,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 15,
+        "mad": 15,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 30,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 0,
+        "craft": 0
+      },
+      "starforceStat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 145,
+        "dex": 145,
+        "int": 145,
+        "luk": 145,
+        "all": 0,
+        "mhp": 0,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 106,
+        "mad": 106,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 0,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 0,
+        "craft": 0
+      },
+      "upgradeStat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 30,
+        "dex": 30,
+        "int": 30,
+        "luk": 30,
+        "all": 0,
+        "mhp": 0,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 0,
+        "mad": 110,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 0,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 0,
+        "craft": 0
+      },
+      "exOptionStat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 0,
+        "dex": 0,
+        "int": 0,
+        "luk": 0,
+        "all": 0,
+        "mhp": 0,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 0,
+        "mad": 0,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 0,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 0,
+        "craft": 0
+      },
+      "timeLimitedStat": {
+        "reduceReq": 0,
+        "incReq": 0,
+        "arc": 0,
+        "aut": 0,
+        "str": 0,
+        "dex": 0,
+        "int": 0,
+        "luk": 0,
+        "all": 0,
+        "mhp": 0,
+        "mmp": 0,
+        "hpr": 0,
+        "mpr": 0,
+        "mdf": 0,
+        "pad": 0,
+        "mad": 0,
+        "pdd": 0,
+        "speed": 0,
+        "jump": 0,
+        "dam": 0,
+        "bdr": 0,
+        "imdr": 0,
+        "addExpr": 0,
+        "expRate": 0,
+        "srExpRate": 0,
+        "srMesoRate": 0,
+        "srDropRate": 0,
+        "pqExpRate": 0,
+        "chuc": 0,
+        "craft": 0
+      },
+      "cashOptionStat": null,
+      "preventSlip": false,
+      "supportWarm": false,
+      "upgradeInfo": {
+        "disabledSummary": "추가옵션 강화 불가",
+        "starForce": {
+          "current": 22,
+          "max": 30,
+          "canUpgrade": true,
+          "description": "스타포스 : 22성 (최대 30성)"
+        },
+        "scroll": {
+          "current": 10,
+          "remaining": 0,
+          "failure": 0,
+          "max": 10,
+          "canUpgrade": true,
+          "description": "주문서 강화 10회 (잔여 0회, 복구 가능 0회)"
         },
         "exOption": {
           "sum": 0,
@@ -21694,11 +22212,11 @@
           "entries": [
             {
               "grade": 4,
-              "text": "INT +8%"
+              "text": "올스탯 +6%"
             },
             {
               "grade": 3,
-              "text": "올스탯 +5%"
+              "text": "INT +6%"
             },
             {
               "grade": 3,
