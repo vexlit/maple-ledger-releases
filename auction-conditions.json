@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "32b26d28-54bb-4a6a-a65b-af00c0a47529",
+    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
+    "condition": {
+      "keyword": "컴플리트 언더컨트롤",
+      "priceMax": 17499999999,
+      "myWorldOnly": true
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-15T13:46:26.066Z"
+  }
+]
