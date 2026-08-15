@@ -1,16 +1,5 @@
 [
   {
-    "id": "76aa0350-23d0-43e0-af08-0ac2e01a5eb8",
-    "machineId": "concurrency-smoke-test",
-    "condition": {
-      "keyword": "race-3",
-      "priceMax": 1
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-15T10:25:41.863Z"
-  },
-  {
     "id": "a95c351f-6a36-4045-8d9d-cd915da8996c",
     "machineId": "concurrency-smoke-test",
     "condition": {
