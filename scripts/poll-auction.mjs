@@ -198,7 +198,7 @@ function parseTradeSn(itemId) {
 async function fetchItems(entry, id) {
   if (entry.searchKey) {
     const qs = new URLSearchParams({
-      page: '1', limit: '20', sortType: 'PRICE_PER_ITEM_ASC',
+      page: '1', limit: '50', sortType: 'PRICE_PER_ITEM_ASC',
       accountId: String(id.accountId), characterId: String(id.characterId),
     });
     const reply = await api(`${ITEM_API_BASE}/searches/${encodeURIComponent(entry.searchKey)}/tool-tip?${qs}`);
@@ -243,11 +243,15 @@ async function main() {
   console.log(`신원 확인 완료: worldId=${id.worldId} accountId=${id.accountId} characterId=${id.characterId}`);
 
   let newResultCount = 0;
+  // 조건별로 이번 폴링에서 실제로 확인된 tradeSn 집합. 폴링에 성공한 조건만
+  // 기록해서, 실패한 조건의 기존 매물을 "팔렸다"고 오판해 지우지 않게 한다.
+  const currentByCondition = new Map();
   for (const entry of conditions) {
     entry.seenTradeSns ??= [];
     try {
       const { items, searchKey, mode } = await fetchItems(entry, id);
       entry.searchKey = searchKey;
+      currentByCondition.set(entry.id, new Set(items.map((item) => parseTradeSn(item._id))));
 
       const seen = new Set(entry.seenTradeSns);
       const priceMax = entry.condition?.priceMax;
@@ -287,8 +291,19 @@ async function main() {
     }
   }
 
-  results.sort((a, b) => a.foundAt.localeCompare(b.foundAt));
-  const trimmedResults = results.slice(-MAX_RESULTS);
+  // 이번 폴링에서 확인한 조건인데 더 이상 목록에 없는 매물은 판매완료/만료로
+  // 보고 결과에서 제거한다. 폴링 자체가 실패한 조건은 건드리지 않는다.
+  const liveResults = results.filter((r) => {
+    const current = currentByCondition.get(r.conditionId);
+    if (!current) return true;
+    if (current.has(r.tradeSn)) return true;
+    return false;
+  });
+  const removedCount = results.length - liveResults.length;
+  if (removedCount > 0) console.log(`판매완료/만료로 제거된 매물: ${removedCount}건`);
+
+  liveResults.sort((a, b) => a.foundAt.localeCompare(b.foundAt));
+  const trimmedResults = liveResults.slice(-MAX_RESULTS);
 
   writeJson(CONDITIONS_PATH, conditions);
   writeJson(RESULTS_PATH, trimmedResults);
