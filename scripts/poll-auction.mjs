@@ -89,15 +89,78 @@ async function discoverIdentity() {
   throw new Error('메이플 캐릭터를 찾지 못했습니다.');
 }
 
-function buildCreateBody(condition, id) {
-  const filters = { exactMatch: false };
-  if (condition.keyword) filters.keyword = condition.keyword;
-  if (condition.category) filters.itemCategory = { itemDetailCategory: condition.category };
-  if (condition.priceMin != null || condition.priceMax != null) {
-    filters.price = {};
-    if (condition.priceMin != null) filters.price.min = String(condition.priceMin);
-    if (condition.priceMax != null) filters.price.max = String(condition.priceMax);
+function sumRows(rows) {
+  const out = {};
+  for (const r of rows) out[r.option] = (out[r.option] ?? 0) + r.minValue;
+  return out;
+}
+
+function eachRows(rows) {
+  return rows.map((r) => ({ [r.option]: r.minValue }));
+}
+
+function buildCreateBody(p, id) {
+  const filters = { exactMatch: p.exactMatch ?? false };
+  if (p.keyword) filters.keyword = p.keyword;
+
+  if (p.category || p.jobClass) {
+    const cat = {};
+    if (p.category) cat.itemDetailCategory = p.category;
+    if (p.jobClass) cat.itemJobCategory = p.jobClass;
+    filters.itemCategory = cat;
   }
+
+  if (p.priceMin != null || p.priceMax != null) {
+    const price = {};
+    if (p.priceMin != null) price.min = String(p.priceMin);
+    if (p.priceMax != null) price.max = String(p.priceMax);
+    filters.price = price;
+  }
+
+  if (p.levelMin != null || p.levelMax != null || p.gender != null || p.royalSpecialType != null || p.petGrade != null) {
+    const basic = {};
+    if (p.levelMin != null) basic.levelMin = p.levelMin;
+    if (p.levelMax != null) basic.levelMax = p.levelMax;
+    if (p.gender != null) basic.gender = p.gender;
+    if (p.royalSpecialType != null) basic.royalSpecialType = p.royalSpecialType;
+    if (p.petGrade != null) basic.petGrade = p.petGrade;
+    filters.basicOption = basic;
+  }
+
+  const enh = {};
+  if (p.starforceMin != null) enh.starforceMin = p.starforceMin;
+  if (p.starforceMax != null) enh.starforceMax = p.starforceMax;
+  if (p.potentialGrade != null) enh.potentialGrade = p.potentialGrade;
+  if (p.additionalPotentialGrade != null) enh.additionalPotentialGrade = p.additionalPotentialGrade;
+  if (p.potentialOptions?.length) {
+    if (p.potentialSum ?? true) enh.potentialOptionSum = sumRows(p.potentialOptions);
+    else enh.potentialOptions = eachRows(p.potentialOptions);
+  }
+  if (p.additionalPotentialOptions?.length) {
+    if (p.additionalPotentialSum ?? true) enh.additionalPotentialOptionSum = sumRows(p.additionalPotentialOptions);
+    else enh.additionalPotentialOptions = eachRows(p.additionalPotentialOptions);
+  }
+  for (const r of p.extraOptions ?? []) enh[r.option] = r.minValue;
+  for (const r of p.scrollOptions ?? []) enh[r.option] = r.minValue;
+  if (p.remainUpgradeCountMin != null) enh.remainUpgradeCountMin = p.remainUpgradeCountMin;
+  if (p.remainUpgradeCountMax != null) enh.remainUpgradeCountMax = p.remainUpgradeCountMax;
+  if (Object.keys(enh).length) filters.enhancementOption = enh;
+
+  const etc = {};
+  if (p.seedRingLevelMin != null) etc.seedRingLevelMin = p.seedRingLevelMin;
+  if (p.seedRingLevelMax != null) etc.seedRingLevelMax = p.seedRingLevelMax;
+  if (p.cuttableCountMin != null) etc.cuttableCountMin = p.cuttableCountMin;
+  if (p.cuttableCountMax != null) etc.cuttableCountMax = p.cuttableCountMax;
+  if (p.uncuttable) etc.uncuttable = true;
+  if (p.isBindedWhenEquipped) etc.isBindedWhenEquipped = true;
+  if (p.isExOptExtractable) etc.isExOptExtractable = true;
+  if (p.isPotentialExtractable) etc.isPotentialExtractable = true;
+  if (Object.keys(etc).length) filters.etcOption = etc;
+
+  if (p.cashOptions?.length) filters.cashOption = sumRows(p.cashOptions);
+
+  if (p.myWorldOnly) filters.myWorldOnly = true;
+
   return {
     worldId: id.worldId,
     accountId: id.accountId,
