@@ -10,7 +10,10 @@ const RESULTS_PATH = new URL('../auction-results.json', import.meta.url);
 const STATUS_PATH = new URL('../auction-poll-status.json', import.meta.url);
 const MAX_RESULTS = 300;
 const MAX_SEEN_PER_CONDITION = 300;
-const PAGE_LIMIT = 100;
+// 넥슨 옥션 API 제약(maple-auction-mcp 라이브러리 기준):
+// 검색 생성(POST)의 limit은 10 고정, 페이지 조회(GET)의 limit은 20/40/60만 허용.
+const CREATE_LIMIT = 10;
+const PAGE_LIMIT = 60;
 
 const ALERT_URL = 'https://maple-ledger-inquiry.maple-ledger-inquiry.workers.dev/internal/alert';
 const ALERT_SECRET = process.env.ALERT_SECRET;
@@ -184,10 +187,7 @@ function buildCreateBody(p, id) {
     accountId: id.accountId,
     characterId: id.characterId,
     page: 1,
-    // 검색 생성 시 준 limit이 searchKey가 가리키는 결과셋 자체의 크기를
-    // 고정해버리는 것으로 보인다(재사용 GET에서 limit을 늘려도 소용없음).
-    // 그래서 여기서도 페이지네이션과 동일한 크기로 만들어야 뒤 페이지가 존재한다.
-    limit: PAGE_LIMIT,
+    limit: CREATE_LIMIT,
     sortType: 'PRICE_PER_ITEM_ASC',
     saveRecentKeyword: false,
     filters,
