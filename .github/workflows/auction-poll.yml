@@ -1,8 +1,6 @@
 name: Auction Poll
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
