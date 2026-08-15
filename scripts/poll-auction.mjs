@@ -10,6 +10,7 @@ const RESULTS_PATH = new URL('../auction-results.json', import.meta.url);
 const STATUS_PATH = new URL('../auction-poll-status.json', import.meta.url);
 const MAX_RESULTS = 300;
 const MAX_SEEN_PER_CONDITION = 300;
+const PAGE_LIMIT = 100;
 
 const ALERT_URL = 'https://maple-ledger-inquiry.maple-ledger-inquiry.workers.dev/internal/alert';
 const ALERT_SECRET = process.env.ALERT_SECRET;
@@ -183,7 +184,10 @@ function buildCreateBody(p, id) {
     accountId: id.accountId,
     characterId: id.characterId,
     page: 1,
-    limit: 10,
+    // 검색 생성 시 준 limit이 searchKey가 가리키는 결과셋 자체의 크기를
+    // 고정해버리는 것으로 보인다(재사용 GET에서 limit을 늘려도 소용없음).
+    // 그래서 여기서도 페이지네이션과 동일한 크기로 만들어야 뒤 페이지가 존재한다.
+    limit: PAGE_LIMIT,
     sortType: 'PRICE_PER_ITEM_ASC',
     saveRecentKeyword: false,
     filters,
@@ -195,7 +199,6 @@ function parseTradeSn(itemId) {
   return i < 0 ? String(itemId) : String(itemId).slice(0, i);
 }
 
-const PAGE_LIMIT = 100;
 const MAX_PAGES = 30; // 조건당 최대 이 페이지 수까지 훑어서 "목록에서 사라짐" 오판을 줄인다.
 
 // searchKey 재사용 GET은 검색 생성 횟수를 소진하지 않으므로 여러 페이지를 이어서
