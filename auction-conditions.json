@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "a32852f8-158e-4274-95e4-bdcc2196ecfe",
+    "machineId": "claude-test-advfilter2",
+    "condition": {
+      "category": "ARMOR_ARMOR_GLOVE",
+      "priceMin": 1,
+      "priceMax": 5000000000,
+      "levelMin": 100,
+      "levelMax": 200,
+      "starforceMin": 1,
+      "potentialGrade": 3,
+      "potentialOptions": [
+        {
+          "option": "bossDamagePercent",
+          "minValue": 30
+        }
+      ],
+      "potentialSum": true,
+      "myWorldOnly": false
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-15T13:21:00.946Z"
+  }
+]
