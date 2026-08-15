@@ -1,16 +1,5 @@
 [
   {
-    "id": "35e646ec-addb-4edc-aa95-6b2e8b2bdbb4",
-    "machineId": "concurrency-smoke-test",
-    "condition": {
-      "keyword": "race2-8",
-      "priceMax": 1
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-15T10:26:23.340Z"
-  },
-  {
     "id": "e58dc309-b6d8-448b-b815-4bda0ca9803b",
     "machineId": "concurrency-smoke-test",
     "condition": {
