@@ -1,25 +1,5 @@
 [
   {
-    "id": "7a3eabb7-3be3-42d8-8bb9-a2932d7f653d:3X9Tr7lTeckrXN1fszoPZ2JxSPiXkbWp4IiO6y8sHIc",
-    "conditionId": "7a3eabb7-3be3-42d8-8bb9-a2932d7f653d",
-    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
-    "itemName": "컴플리트 언더컨트롤",
-    "price": 17444444444,
-    "tradeSn": "3X9Tr7lTeckrXN1fszoPZ2JxSPiXkbWp4IiO6y8sHIc",
-    "endDate": "2026-08-17T14:01:58.477Z",
-    "foundAt": "2026-08-15T14:06:44.746Z"
-  },
-  {
-    "id": "7a3eabb7-3be3-42d8-8bb9-a2932d7f653d:eAxJy0uJEJ929CH1Bbc5EKTrFZgOUifLBglgKIE1yaM",
-    "conditionId": "7a3eabb7-3be3-42d8-8bb9-a2932d7f653d",
-    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
-    "itemName": "컴플리트 언더컨트롤",
-    "price": 17500000000,
-    "tradeSn": "eAxJy0uJEJ929CH1Bbc5EKTrFZgOUifLBglgKIE1yaM",
-    "endDate": "2026-08-17T12:39:43.160Z",
-    "foundAt": "2026-08-15T14:06:44.747Z"
-  },
-  {
     "id": "d4922591-cb5f-4f43-9087-78223bb1eda7:eAxJy0uJEJ929CH1Bbc5EKTrFZgOUifLBglgKIE1yaM",
     "conditionId": "d4922591-cb5f-4f43-9087-78223bb1eda7",
     "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
