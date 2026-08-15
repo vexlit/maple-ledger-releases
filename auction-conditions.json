@@ -1,13 +1,1 @@
-[
-  {
-    "id": "b23b28af-5b67-4ef9-af13-34efbda051f7",
-    "machineId": "claude-test-alertcheck",
-    "condition": {
-      "keyword": "test",
-      "priceMax": 1
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-15T13:15:46.466Z"
-  }
-]
+[]
