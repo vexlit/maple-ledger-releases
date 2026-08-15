@@ -195,19 +195,39 @@ function parseTradeSn(itemId) {
   return i < 0 ? String(itemId) : String(itemId).slice(0, i);
 }
 
-async function fetchItems(entry, id) {
-  if (entry.searchKey) {
+const PAGE_LIMIT = 100;
+const MAX_PAGES = 5; // 조건당 최대 500건까지 훑어서 "목록에서 사라짐" 오판을 줄인다.
+
+// searchKey 재사용 GET은 검색 생성 횟수를 소진하지 않으므로 여러 페이지를 이어서
+// 가져와도 무료다. 첫 페이지 요청이 실패하면(검색 만료 등) null을 반환해 재생성하게 한다.
+async function fetchAllItems(searchKey, id) {
+  let items = [];
+  for (let page = 1; page <= MAX_PAGES; page++) {
     const qs = new URLSearchParams({
-      page: '1', limit: '50', sortType: 'PRICE_PER_ITEM_ASC',
+      page: String(page), limit: String(PAGE_LIMIT), sortType: 'PRICE_PER_ITEM_ASC',
       accountId: String(id.accountId), characterId: String(id.characterId),
     });
-    const reply = await api(`${ITEM_API_BASE}/searches/${encodeURIComponent(entry.searchKey)}/tool-tip?${qs}`);
-    if (reply.ok) return { items: reply.data?.items ?? [], searchKey: entry.searchKey, mode: 'GET(재사용)' };
+    const reply = await api(`${ITEM_API_BASE}/searches/${encodeURIComponent(searchKey)}/tool-tip?${qs}`);
+    if (!reply.ok) return page === 1 ? null : items;
+    const pageItems = reply.data?.items ?? [];
+    items = items.concat(pageItems);
+    if (pageItems.length < PAGE_LIMIT) break;
+  }
+  return items;
+}
+
+async function fetchItems(entry, id) {
+  if (entry.searchKey) {
+    const items = await fetchAllItems(entry.searchKey, id);
+    if (items != null) return { items, searchKey: entry.searchKey, mode: `GET(재사용, ${items.length}건)` };
   }
   const body = buildCreateBody(entry.condition, id);
   const created = await api(SEARCH_URL, 'POST', body);
   if (!created.ok) throw new Error(`검색 생성 실패 (HTTP ${created.status}): ${JSON.stringify(created.data)}`);
-  return { items: created.data?.items ?? [], searchKey: created.data?.searchKey ?? null, mode: 'POST(신규)' };
+  const searchKey = created.data?.searchKey ?? null;
+  if (!searchKey) return { items: created.data?.items ?? [], searchKey: null, mode: 'POST(신규)' };
+  const items = await fetchAllItems(searchKey, id);
+  return { items: items ?? (created.data?.items ?? []), searchKey, mode: 'POST(신규)+GET(전체)' };
 }
 
 async function main() {
@@ -291,13 +311,22 @@ async function main() {
     }
   }
 
+  const conditionById = new Map(conditions.map((c) => [c.id, c]));
+
   // 이번 폴링에서 확인한 조건인데 더 이상 목록에 없는 매물은 판매완료/만료로
   // 보고 결과에서 제거한다. 폴링 자체가 실패한 조건은 건드리지 않는다.
+  // 목록엔 남아있어도 조건의 현재 가격 범위를 벗어난 매물도 함께 제거한다.
   const liveResults = results.filter((r) => {
     const current = currentByCondition.get(r.conditionId);
     if (!current) return true;
-    if (current.has(r.tradeSn)) return true;
-    return false;
+    if (!current.has(r.tradeSn)) return false;
+
+    const cond = conditionById.get(r.conditionId)?.condition;
+    if (cond) {
+      if (cond.priceMin != null && r.price < cond.priceMin) return false;
+      if (cond.priceMax != null && r.price > cond.priceMax) return false;
+    }
+    return true;
   });
   const removedCount = results.length - liveResults.length;
   if (removedCount > 0) console.log(`판매완료/만료로 제거된 매물: ${removedCount}건`);
