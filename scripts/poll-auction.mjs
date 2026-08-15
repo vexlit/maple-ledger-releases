@@ -196,12 +196,18 @@ function parseTradeSn(itemId) {
 }
 
 const PAGE_LIMIT = 100;
-const MAX_PAGES = 5; // 조건당 최대 500건까지 훑어서 "목록에서 사라짐" 오판을 줄인다.
+const MAX_PAGES = 30; // 조건당 최대 이 페이지 수까지 훑어서 "목록에서 사라짐" 오판을 줄인다.
 
 // searchKey 재사용 GET은 검색 생성 횟수를 소진하지 않으므로 여러 페이지를 이어서
 // 가져와도 무료다. 첫 페이지 요청이 실패하면(검색 만료 등) null을 반환해 재생성하게 한다.
+//
+// 서버가 요청한 limit(100)을 그대로 안 지키고 자체 페이지 크기(예: 10건)로
+// 잘라서 줄 수 있다. 그래서 "이번 페이지 건수 < 요청한 limit"이 아니라
+// "이번 페이지 건수 < 첫 페이지에서 실제로 관측된 페이지 크기"일 때만 마지막
+// 페이지로 판단해야 중간에 결과가 잘리지 않는다.
 async function fetchAllItems(searchKey, id) {
   let items = [];
+  let observedPageSize = null;
   for (let page = 1; page <= MAX_PAGES; page++) {
     const qs = new URLSearchParams({
       page: String(page), limit: String(PAGE_LIMIT), sortType: 'PRICE_PER_ITEM_ASC',
@@ -211,7 +217,9 @@ async function fetchAllItems(searchKey, id) {
     if (!reply.ok) return page === 1 ? null : items;
     const pageItems = reply.data?.items ?? [];
     items = items.concat(pageItems);
-    if (pageItems.length < PAGE_LIMIT) break;
+    if (pageItems.length === 0) break;
+    if (observedPageSize == null) observedPageSize = pageItems.length;
+    if (pageItems.length < observedPageSize) break;
   }
   return items;
 }
@@ -316,15 +324,19 @@ async function main() {
   // 이번 폴링에서 확인한 조건인데 더 이상 목록에 없는 매물은 판매완료/만료로
   // 보고 결과에서 제거한다. 폴링 자체가 실패한 조건은 건드리지 않는다.
   // 목록엔 남아있어도 조건의 현재 가격 범위를 벗어난 매물도 함께 제거한다.
+  // 조건 자체가 삭제된 경우엔 currentByCondition에 아예 안 잡히므로
+  // (폴링 실패와 구분해) 그 결과는 무조건 정리한다.
   const liveResults = results.filter((r) => {
+    const cond = conditionById.get(r.conditionId);
+    if (!cond) return false;
+
     const current = currentByCondition.get(r.conditionId);
     if (!current) return true;
     if (!current.has(r.tradeSn)) return false;
 
-    const cond = conditionById.get(r.conditionId)?.condition;
-    if (cond) {
-      if (cond.priceMin != null && r.price < cond.priceMin) return false;
-      if (cond.priceMax != null && r.price > cond.priceMax) return false;
+    if (cond.condition) {
+      if (cond.condition.priceMin != null && r.price < cond.condition.priceMin) return false;
+      if (cond.condition.priceMax != null && r.price > cond.condition.priceMax) return false;
     }
     return true;
   });
