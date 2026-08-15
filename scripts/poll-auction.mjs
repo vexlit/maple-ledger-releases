@@ -22,13 +22,13 @@ if (!NEXON_COOKIE) {
 
 const DEVICE_ID = process.env.NEXON_DEVICE_ID || randomBytes(16).toString('hex');
 
-async function sendAlert(message) {
+async function sendAlert(message, { cookieButton = false } = {}) {
   if (!ALERT_SECRET) return;
   try {
     await fetch(ALERT_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-alert-secret': ALERT_SECRET },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, cookieButton }),
     });
   } catch (err) {
     console.error(`알림 전송 실패: ${err.message}`);
@@ -226,7 +226,10 @@ async function main() {
     id = await discoverIdentity();
   } catch (err) {
     if (!status.authFailing) {
-      await sendAlert(`⚠️ 옥션 알림 폴링이 인증 실패로 멈췄어요. NEXON_COOKIE를 새로 캡처해서 갱신해주세요.\n${err.message}`);
+      await sendAlert(
+        `옥션 알림 폴링이 인증 실패로 멈췄어요.\n아래 "쿠키 갱신하기" 버튼을 눌러 새 쿠키 값을 입력해주세요.\n${err.message}`,
+        { cookieButton: true }
+      );
       writeJson(STATUS_PATH, { authFailing: true });
     }
     throw err;
@@ -268,6 +271,10 @@ async function main() {
           tradeSn,
           endDate: item.endDate,
           foundAt: new Date().toISOString(),
+          // 상세보기 모달용 원본 데이터. 넥슨 검색 응답의 tool-tip이 이미
+          // 잠재능력/스탯/강화정보를 다 담고 있어서 그대로 저장한다.
+          icon: item.itemIcon?.fallBackUrl ?? null,
+          toolTip: item.toolTip ?? null,
         });
         newResultCount++;
       }
