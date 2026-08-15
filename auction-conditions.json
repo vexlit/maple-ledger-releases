@@ -9,16 +9,5 @@
     "searchKey": null,
     "seenTradeSns": [],
     "createdAt": "2026-08-15T15:36:20.908Z"
-  },
-  {
-    "id": "80889a7d-6195-4735-a563-2d8f22b5f9a2",
-    "machineId": "f54eda57-4d62-41aa-ae65-d3c3c2383e5d",
-    "condition": {
-      "keyword": "컴플리트 언더컨트롤",
-      "priceMin": 150000000000
-    },
-    "searchKey": null,
-    "seenTradeSns": [],
-    "createdAt": "2026-08-15T15:40:34.304Z"
   }
 ]
