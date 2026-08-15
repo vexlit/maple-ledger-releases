@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "5ac002a9-0d28-427c-b13f-5b6d58fa3e51",
+    "machineId": "concurrency-smoke-test",
+    "condition": {
+      "keyword": "test",
+      "priceMax": 1
+    },
+    "searchKey": null,
+    "seenTradeSns": [],
+    "createdAt": "2026-08-15T10:25:15.327Z"
+  }
+]
