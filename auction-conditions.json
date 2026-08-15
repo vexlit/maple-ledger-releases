@@ -6,8 +6,11 @@
       "keyword": "컴플리트 언더컨트롤",
       "priceMax": 17500000000
     },
-    "searchKey": null,
-    "seenTradeSns": [],
+    "searchKey": "3ce6f39a-00c6-44ed-96c0-b3ee1a395591",
+    "seenTradeSns": [
+      "3X9Tr7lTeckrXN1fszoPZ2JxSPiXkbWp4IiO6y8sHIc",
+      "eAxJy0uJEJ929CH1Bbc5EKTrFZgOUifLBglgKIE1yaM"
+    ],
     "createdAt": "2026-08-15T14:05:31.143Z"
   }
 ]
