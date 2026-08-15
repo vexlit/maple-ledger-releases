@@ -7,8 +7,12 @@ const SEARCH_URL = `${ITEM_API_BASE}/searches/tool-tip`;
 
 const CONDITIONS_PATH = new URL('../auction-conditions.json', import.meta.url);
 const RESULTS_PATH = new URL('../auction-results.json', import.meta.url);
+const STATUS_PATH = new URL('../auction-poll-status.json', import.meta.url);
 const MAX_RESULTS = 300;
 const MAX_SEEN_PER_CONDITION = 300;
+
+const ALERT_URL = 'https://maple-ledger-inquiry.maple-ledger-inquiry.workers.dev/internal/alert';
+const ALERT_SECRET = process.env.ALERT_SECRET;
 
 const NEXON_COOKIE = process.env.NEXON_COOKIE;
 if (!NEXON_COOKIE) {
@@ -17,6 +21,19 @@ if (!NEXON_COOKIE) {
 }
 
 const DEVICE_ID = process.env.NEXON_DEVICE_ID || randomBytes(16).toString('hex');
+
+async function sendAlert(message) {
+  if (!ALERT_SECRET) return;
+  try {
+    await fetch(ALERT_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-alert-secret': ALERT_SECRET },
+      body: JSON.stringify({ message }),
+    });
+  } catch (err) {
+    console.error(`알림 전송 실패: ${err.message}`);
+  }
+}
 
 function headers(hasBody = false) {
   const h = {
@@ -202,7 +219,24 @@ async function main() {
     return;
   }
 
-  const id = await discoverIdentity();
+  const status = readJson(STATUS_PATH, { authFailing: false });
+
+  let id;
+  try {
+    id = await discoverIdentity();
+  } catch (err) {
+    if (!status.authFailing) {
+      await sendAlert(`⚠️ 옥션 알림 폴링이 인증 실패로 멈췄어요. NEXON_COOKIE를 새로 캡처해서 갱신해주세요.\n${err.message}`);
+      writeJson(STATUS_PATH, { authFailing: true });
+    }
+    throw err;
+  }
+
+  if (status.authFailing) {
+    await sendAlert('✅ 옥션 알림 폴링 인증이 복구됐어요.');
+    writeJson(STATUS_PATH, { authFailing: false });
+  }
+
   console.log(`신원 확인 완료: worldId=${id.worldId} accountId=${id.accountId} characterId=${id.characterId}`);
 
   let newResultCount = 0;
